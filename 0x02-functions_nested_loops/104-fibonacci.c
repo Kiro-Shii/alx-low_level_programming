@@ -6,47 +6,25 @@
   */
 int main(void)
 {
-	int i;
-	unsigned long cnt, new, aux;
-	unsigned long a, b, c, aux2;
 
-	i = 0;
-	cnt = 0;
-	new = 1;
-	for (i = 1; i <= 91; i++)
+	int i = 0;
+	long j = 1, k = 2;
+
+	while (i < 50)
 	{
-		aux = cnt + new;
-		cnt = new;
-		new = aux;
-		printf("%lu, ", aux);
-	}
+		if (i == 0)
+			printf("%ld", j);
 
-	a = cnt % 1000;
-	cnt = cnt / 1000;
-	b = new % 1000;
-	new = new / 1000;
-
-	while (i <= 98)
-
-	{
-
-		aux2 = (a + b) / 1000;
-		c = (a + b) - aux2 * 1000;
-		aux = (cnt + new) + aux2;
-		a = b;
-		b = c;
-		cnt = new;
-		new = aux;
-		if (c >= 100)
-			printf("%lu%lu", aux, c);
+		else if (i == 1)
+			printf(", %ld", k);
 		else
-			printf("%lu0%lu", aux, c);
-		if (i != 98)
-			printf(", ");
-		i++;
+		{
+			k += j;
+			j = k - j;
+			printf(", %ld", k);
+		}
+		++i;
 	}
-
-	putchar('\n');
-
+	printf("\n");
 	return (0);
 }
